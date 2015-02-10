@@ -2,17 +2,17 @@
   <HEAD>
     {% load staticfiles %}
 
-	<link rel="stylesheet" type="text/css" href="{% static 'narvaro/formatmall.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'formatmall.css' %}" />
   </HEAD>
  <BODY>
 <p>
 </p>
 <h2>Registrerade medlemmar:</h2>
-        <table width="100%" border="0">
+        <table width="10%" border="0">
           <tbody>
             <tr>
-              <td width="12%">Antal GK: </td>
-              <td width="88%">{{gk}}</td>
+              <td width="50%">Antal GK: </td>
+              <td width="50%">{{gk}}</td>
             </tr>
             <tr>
               <td>Antal FK: </td>
@@ -30,12 +30,14 @@
 
     	{% for session in s %}
         <br>
+        <div id="sessions">
+		<a href="{% url 'percent' session.id %}">
 
-           	<a href="{% url 'percent' session.id %}">
             	&Ouml;vningen/lektionen den {{ session.date }}
-            </a>
 
-        </br>
+        </a>
+		</div>
+		</br>
 		{% endfor %}  
 
   </BODY>

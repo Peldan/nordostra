@@ -2,32 +2,28 @@
   <HEAD>
     {% load staticfiles %}
 
-	<link rel="stylesheet" type="text/css" href="{% static 'narvaro/formatmall.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'formatmall.css' %}" />
   </HEAD>
  <BODY>
-&Ouml;vningen den <b>{{ session }}</b> n&auml;rvarade <b>{{ percent }} %</b> av alla medlemmar. 
+ <div id="sessions">
+&Ouml;vningen/Lektionen den <b>{{ session }}</b> n&auml;rvarade <b>{{ percent }} %</b> av alla medlemmar, dvs <b>{{ antal }}</b>st.
+</div>
+<blockquote>
+</blockquote>
+
+<table summary="personer">
+<tr><th>Närvarande personer</th>
+{% for person in alla %}
+    	<tr><td> {{	person }} </td></td>
+{% endfor %}
+</table>
 <p>
 </p>
-        <table width="100%" border="0">
-          <tbody>
-            <tr>
-              <td width="12%">Antal GK: </td>
-              <td width="88%">{{gk}}</td>
-            </tr>
-            <tr>
-              <td>Antal FK: </td>
-              <td>{{fk}}</td>
-            </tr>
-            <tr>
-              <td>Antal LK: </td>
-              <td>{{lk}}</td>
-            </tr>
-          </tbody>
-        </table>
- <blockquote>
- <blockquote>
- </blockquote>     
-        
-        
-  </BODY>
+
+<p>
+</p>
+<div id="link">
+<a href="{% url 'home' %}"> Tillbaka </a>     
+</div>
+</BODY>
 </HTML>

@@ -8,16 +8,15 @@ def percent(request, session):
     session = Session.objects.get(id = session)
     s = Session.objects.all()
     s_id = []
+    allpersons = list(session.persons.all())
     persons = Person.objects.all().count()
     s_date = []
     session_attendees = session.persons.count()
-    antalfk = Person.objects.filter(kurs = 'FK').count()
-    antalgk = Person.objects.filter(kurs = 'GK').count()
-    antallk = Person.objects.filter(kurs = 'LK').count()
+    
     for i in s:
         s_id.append(i.id)
         s_date.append(i)
-    return render_to_response('narvaro/ost.html',{'session':session.date, 'percent':session_attendees * 100 / persons, 'fk':antalfk, 'gk': antalgk, 'lk': antallk, 'sesdir': s_id, 'ses': s_date})
+    return render_to_response('narvaro/ost.html',{'session':session.date, 'percent':session_attendees * 100 / persons, 'antal': session_attendees, 'alla': allpersons, 'sesdir': s_id, 'ses': s_date})
 
 
 def home(request):
